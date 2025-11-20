@@ -12,7 +12,6 @@ class Tokeniser:
             return words
     
     def count_tokens(self, tokens: list[str]) -> dict[str, int]:
-        print(tokens)
         counter = Counter()
         for word in tokens:
             counter[word] += 1
