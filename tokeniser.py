@@ -7,6 +7,6 @@ class Tokeniser:
             return 'Input text must be a string'
         else:
             lower_text = text.lower()
-            words = [word for word in re.split(r'[ .,!?:]+', lower_text) if word]
+            words = [word for word in re.split(r'[ .,;"\'/()!?:]+', lower_text) if word]
             return words
         
