@@ -24,6 +24,8 @@ class Tokeniser:
         return sorted_tokens
     
     def split_into_subwords(self, tokens: list[str]) -> list[list[str]]:
+        if tokens == []:
+            return 'Empty input list'
         subwords = []
         for word in tokens:
             split_word = [ch for ch in word]
