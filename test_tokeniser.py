@@ -53,5 +53,11 @@ def test_count_tokens_returns_dict_with_str_keys_and_int_values():
         "hat": 1
     }
 
+# Test 8
+def test_count_tokens_empty_dict_when_passed_empty_list():
+    t = Tokeniser()
+    output = t.count_tokens([])
+    assert output == {}
+
 
     
