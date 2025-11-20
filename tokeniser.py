@@ -18,6 +18,6 @@ class Tokeniser:
         return token_counts
     
     def sort_vocab(self, token_counts: dict[str, int]) -> list[tuple[str, int]]:
-        sorted_tokens = list(sorted(token_counts.items(), key=lambda item: item[1]))
+        sorted_tokens = list(sorted(token_counts.items(), key=lambda item: item[1], reverse=True))
         return sorted_tokens
         
