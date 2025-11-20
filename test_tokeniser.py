@@ -97,6 +97,7 @@ def test_split_into_subwords_returns_characters_with_end_symbol():
     t = Tokeniser()
     result = t.split_into_subwords(["cat"])
     assert result == [["c", "a", "t", Tokeniser.END_OF_WORD_SYMBOL]]
+    assert Tokeniser.END_OF_WORD_SYMBOL == "</w>"
 
 # Test 14 
 def test_split_into_subwords_handles_empty_input_list():
