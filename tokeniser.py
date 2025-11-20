@@ -3,6 +3,8 @@ from collections import Counter
 
 class Tokeniser:
 
+    END_OF_WORD_SYMBOL = "</w>"
+
     def tokenise(self, text: str) -> list[str]:
         if type(text) != str:
             return 'Input text must be a string'
@@ -20,4 +22,11 @@ class Tokeniser:
     def sort_vocab(self, token_counts: dict[str, int]) -> list[tuple[str, int]]:
         sorted_tokens = list(sorted(token_counts.items(), key=lambda item: item[1], reverse=True))
         return sorted_tokens
+    
+    def split_into_subwords(self, tokens: list[str]) -> list[list[str]]:
+        subwords = [[]]
+        return subwords
+
+    
+
         
