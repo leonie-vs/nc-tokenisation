@@ -1,5 +1,6 @@
 from tokeniser import Tokeniser
 
+# Test tokenise method of Tokeniser class
 # Test 1
 def test_tokenise_returns_list_of_single_string_input():
     t = Tokeniser()
@@ -38,4 +39,19 @@ def test_tokenise_converts_all_input_to_lowercase_before_tokenising():
     t = Tokeniser()
     output = t.tokenise("Hello world!")
     assert output == ["hello", "world"]
+
+
+# Test count_tokens method of Tokeniser class
+# Test 7
+def test_count_tokens_returns_dict_with_str_keys_and_int_values():
+    t = Tokeniser()
+    output = t.count_tokens(["the", "cat", "in", "the", "hat"])
+    assert output == {
+        "the": 2,
+        "cat": 1,
+        "in": 1,
+        "hat": 1
+    }
+
+
     
