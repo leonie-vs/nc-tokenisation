@@ -156,5 +156,17 @@ def test_build_bpe_vocab_returns_list_of_lists():
     t = Tokeniser()
     tokens = ["aa", "ab", "aa"]
     merged = t.build_bpe_vocab(tokens, num_merges=1)
-    assert type(merge) == list
+    assert type(merged) == list
     assert len(set(type(x) for x in merged)) == 1 
+
+# Test 19
+def test_build_bpe_vocab_merges_common_pairs_first():
+    t = Tokeniser()
+    tokens = ["aa", "ab", "aa"]
+    merged = t.build_bpe_vocab(tokens, num_merges=1)
+    expected = [
+        ["aa", "</w>"],  # "aa"
+        ["a", "b", "</w>"],  # "ab"
+        ["aa", "</w>"]  # "aa"
+    ]
+    assert merged == expected
