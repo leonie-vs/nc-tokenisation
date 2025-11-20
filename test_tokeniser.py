@@ -145,7 +145,16 @@ def test_merge_most_frequent_pair_merges_correctly():
         ("a", "t"): 1,
         ("t", "</w>"): 1
     }
-
     merged = t.merge_most_frequent_pair(subwords, pair_counts)
     assert merged[0] == ["th", "e", "</w>"]
     assert merged[1] == ["h", "a", "t", "</w>"]
+
+
+# Test build_bpe_vocab method of Tokeniser class
+# Test 18
+def test_build_bpe_vocab_returns_list_of_lists():
+    t = Tokeniser()
+    tokens = ["aa", "ab", "aa"]
+    merged = t.build_bpe_vocab(tokens, num_merges=1)
+    assert type(merge) == list
+    assert len(set(type(x) for x in merged)) == 1 
