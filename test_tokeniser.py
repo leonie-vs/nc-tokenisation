@@ -121,3 +121,9 @@ def test_count_symbol_pairs_returns_dict_with_tuple_keys_and_int_values():
     assert result[("a", "r")] == 1
     assert result[("t", "a")] == 1
     assert result[("a", "c")] == 1
+
+# Test 16
+def test_count_symbol_pairs_returns_empty_dict_when_passed_empty_list():
+    t = Tokeniser()
+    output = t.count_symbol_pairs([])
+    assert output == {}
