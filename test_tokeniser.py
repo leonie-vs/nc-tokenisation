@@ -110,10 +110,11 @@ def test_split_into_subwords_handles_empty_input_list():
 # Test 15
 def test_count_symbol_pairs_returns_dict_with_tuple_keys_and_int_values():
     t = Tokeniser()
-    output = t.count_tokens(["the", "cat", "in", "the", "hat"])
-    assert output == {
-        "the": 2,
-        "cat": 1,
-        "in": 1,
-        "hat": 1
-    }
+    subwords = [
+        ["c", "a", "t", "</w>"],
+        ["c", "a", "r", "</w>"]
+    ]
+    result = t.count_symbol_pairs(subwords)
+    assert result[("c", "a")] == 2
+    assert result[("a", "t")] == 1
+    assert result[("a", "r")] == 1
