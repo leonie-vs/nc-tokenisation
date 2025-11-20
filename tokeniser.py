@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 class Tokeniser:
 
@@ -9,4 +10,11 @@ class Tokeniser:
             lower_text = text.lower()
             words = [word for word in re.split(r'[ .,;"\'/()!?:]+', lower_text) if word]
             return words
+    
+    def count_tokens(self, tokens: list[str]) -> dict[str, int]:
+        print(tokens)
+        counter = Counter()
+        for word in tokens:
+            counter[word] += 1
+        return counter
         
