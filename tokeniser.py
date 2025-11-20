@@ -42,9 +42,9 @@ class Tokeniser:
         return pair_counts
     
     def merge_most_frequent_pair(self, subword_tokens: list[list[str]], pair_counts: dict[tuple[str, str], int]) -> list[list[str]]:        
-        sorted_pairs = self.sort_vocab(pair_counts)
-        most_frequent_pair = sorted_pairs[0][0]
-        a, b = most_frequent_pair
+        if not pair_counts:
+            return subword_tokens
+        a, b = max(pair_counts, key=pair_counts.get)
         merged_tokens = []
         for token in subword_tokens:
             new_token = []
@@ -58,6 +58,14 @@ class Tokeniser:
                     i += 1
             merged_tokens.append(new_token)
         return merged_tokens
+    
+    def build_bpe_vocab(self, tokens: list[str], num_merges: int) -> list[list[str]]:
+        subword_tokens = self.split_into_subwords(tokens)
+        for i in range(num_merges):
+            pair_counts = self.count_symbol_pairs(subword_tokens)
+            if not pair_counts:
+                break
+            subword_tokens = self.merge_most_frequent_pair(subword_tokens, pair_counts)
+        return subword_tokens
         
-
         
