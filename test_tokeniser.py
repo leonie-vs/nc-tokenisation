@@ -76,8 +76,9 @@ def test_sort_vocab_returns_list_of_tuples():
     assert type(output[0]) == tuple
     assert len(set(type(x) for x in output)) == 1
 
+# Test 11
 def test_sort_vocab_sorts_tuples_in_desc_order():
     t = Tokeniser()
-    output = t.sort_vocab({"the": 2, "cat": 1, "in": 1, "hat": 1})
-    assert output == [("the", 2), ("cat", 1), ("in", 1), ("hat", 1)]
+    output = t.sort_vocab({"the": 2, "cat": 1, "in": 5, "hat": 1})
+    assert output == [("in", 5), ("the", 2), ("cat", 1), ("hat", 1)]
     
