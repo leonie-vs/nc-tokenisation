@@ -67,5 +67,17 @@ def test_count_tokens_counts_all_tokens_in_passed_list():
     assert all(item in output for item in input) 
 
 
+# Test sort_vocab method of Tokeniser class
+# Test 10
+def test_sort_vocab_returns_list_of_tuples():
+    t = Tokeniser()
+    output = t.sort_vocab({"the": 2, "cat": 1, "in": 1, "hat": 1})
+    assert type(output) == list
+    assert type(output[0]) == tuple
+    assert len(set(type(x) for x in output)) == 1
 
+def test_sort_vocab_sorts_tuples_in_desc_order():
+    t = Tokeniser()
+    output = t.sort_vocab({"the": 2, "cat": 1, "in": 1, "hat": 1})
+    assert output == [("the", 2), ("cat", 1), ("in", 1), ("hat", 1)]
     
