@@ -1,10 +1,11 @@
 from tokeniser import Tokeniser
 
 # Test 1
-def test_tokenise_returns_list_of_string_input():
+def test_tokenise_returns_list_of_single_string_input():
     t = Tokeniser()
     output = t.tokenise("hello")
     assert output == ["hello"]
+    assert type(output) == list
 
 # Test 2
 def test_tokeniser_gives_error_when_input_not_str():
@@ -13,3 +14,9 @@ def test_tokeniser_gives_error_when_input_not_str():
     list_input = t.tokenise(['hello'])
     assert num == 'Input text must be a string'
     assert list_input == 'Input text must be a string'
+
+# Test 3
+def test_tokeniser_returns_list_of_multiple_input_words():
+    t = Tokeniser()
+    output = t.tokenise("hello world")
+    assert output == ["hello", "world"]
