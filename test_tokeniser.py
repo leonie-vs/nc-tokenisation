@@ -176,7 +176,7 @@ def test_build_bpe_vocab_multiple_merges():
     t = Tokeniser()
     tokens = ["aa", "ab", "aa"]
     result = t.build_bpe_vocab(tokens, num_merges=2)
-    # in second merge, the most common pair is "aa" with "</w>"
+	# in the second merge, the most common pair is "aa" with "</w>"
     expected = [
         ["aa</w>"],  
         ["a", "b", "</w>"],  
