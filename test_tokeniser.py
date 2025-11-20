@@ -112,9 +112,12 @@ def test_count_symbol_pairs_returns_dict_with_tuple_keys_and_int_values():
     t = Tokeniser()
     subwords = [
         ["c", "a", "t", "</w>"],
-        ["c", "a", "r", "</w>"]
+        ["c", "a", "r", "</w>"],
+        ["t", "a", "c", "</w>"]
     ]
     result = t.count_symbol_pairs(subwords)
     assert result[("c", "a")] == 2
     assert result[("a", "t")] == 1
     assert result[("a", "r")] == 1
+    assert result[("t", "a")] == 1
+    assert result[("a", "c")] == 1
