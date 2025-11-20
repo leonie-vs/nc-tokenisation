@@ -16,7 +16,13 @@ def test_tokeniser_gives_error_when_input_not_str():
     assert list_input == 'Input text must be a string'
 
 # Test 3
-def test_tokeniser_returns_list_of_multiple_input_words():
+def test_tokeniser_splits_multiple_input_words_based_on_spaces():
     t = Tokeniser()
     output = t.tokenise("hello world")
+    assert output == ["hello", "world"]
+
+# Test 4
+def test_tokeniser_handles_extra_spaces_in_input():
+    t = Tokeniser()
+    output = t.tokenise("  hello    world")
     assert output == ["hello", "world"]
