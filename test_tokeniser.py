@@ -59,5 +59,13 @@ def test_count_tokens_empty_dict_when_passed_empty_list():
     output = t.count_tokens([])
     assert output == {}
 
+# Test 9
+def test_count_tokens_counts_all_tokens_in_passed_list():
+    t = Tokeniser()
+    input = ["the", "cat", "in", "the", "hat"]
+    output = t.count_tokens(input)
+    assert all(item in output for item in input) 
+
+
 
     
