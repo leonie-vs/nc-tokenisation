@@ -32,7 +32,15 @@ class Tokeniser:
             split_word.append(self.END_OF_WORD_SYMBOL)
             subwords.append(split_word)
         return subwords
-
     
+    def count_symbol_pairs(self, subword_tokens: list[list[str]]) -> dict[tuple[str, str], int]:
+        adjacent_pairs = []
+        for word in subword_tokens:
+            for i in range(len(word) - 1):
+                adjacent_pairs.append((word[i], word[i + 1]))
+        pair_count = Counter(adjacent_pairs)
+        return pair_count
+
+
 
         
