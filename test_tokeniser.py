@@ -30,5 +30,12 @@ def test_tokeniser_handles_extra_spaces_in_input():
 # Test 5 
 def test_tokeniser_splits_by_multiple_delimiters():
     t = Tokeniser()
-    output = t.tokenise("Hello world! This is, a sentence? with: punctuation.")
-    assert output == ["Hello", "world", "This", "is", "a", "sentence", "with", "punctuation"]
+    output = t.tokenise("hello world! this is, a sentence? with: punctuation.")
+    assert output == ["hello", "world", "this", "is", "a", "sentence", "with", "punctuation"]
+
+# Test 6
+def test_tokeniser_converts_all_input_to_lowercase_before_tokenising():
+    t = Tokeniser()
+    output = t.tokenise("Hello world!")
+    assert output == ["hello", "world"]
+    
