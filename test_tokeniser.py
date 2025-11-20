@@ -87,7 +87,7 @@ def test_sort_vocab_sorts_tuples_in_desc_order():
 # Test 12
 def test_split_into_subwords_returns_list_of_lists():
     t = Tokeniser()
-    output = t.split_into_subwords([])
+    output = t.split_into_subwords(["cat"])
     assert type(output) == list
     assert type(output[0]) == list
     assert len(set(type(x) for x in output)) == 1
@@ -96,4 +96,10 @@ def test_split_into_subwords_returns_list_of_lists():
 def test_split_into_subwords_returns_characters_with_end_symbol():
     t = Tokeniser()
     result = t.split_into_subwords(["cat"])
-    assert result == [["c", "a", "t", Tokeniser.END_OF_WORD_SYMBOL]]  
+    assert result == [["c", "a", "t", Tokeniser.END_OF_WORD_SYMBOL]]
+
+# Test 14 
+def test_split_into_subwords_handles_empty_input_list():
+    t = Tokeniser()
+    result = t.split_into_subwords([])
+    assert result == 'Empty input list'
