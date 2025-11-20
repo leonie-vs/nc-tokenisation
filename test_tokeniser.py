@@ -81,4 +81,13 @@ def test_sort_vocab_sorts_tuples_in_desc_order():
     t = Tokeniser()
     output = t.sort_vocab({"the": 2, "cat": 1, "in": 5, "hat": 1})
     assert output == [("in", 5), ("the", 2), ("cat", 1), ("hat", 1)]
-    
+
+
+# Test split_into_subwords method of Tokeniser class
+# Test 12
+def test_split_into_subwords_returns_list_of_lists():
+    t = Tokeniser()
+    output = t.split_into_subwords([])
+    assert type(output) == list
+    assert type(output[0]) == list
+    assert len(set(type(x) for x in output)) == 1
