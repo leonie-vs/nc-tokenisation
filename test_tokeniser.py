@@ -183,3 +183,16 @@ def test_build_bpe_vocab_multiple_merges():
         ["aa</w>"]   
     ]
     assert result == expected
+
+
+# Test get_vocab method of Tokeniser class
+# Test 21
+def test_get_vocab_tracks_merged_symbols():
+    t = Tokeniser()
+    t.build_bpe_vocab(["a", "aa", "aa"], num_merges=2)
+    vocab = t.get_vocab()
+    assert "</w>" in vocab
+    assert "a" in vocab
+    assert "a</w>" in vocab
+    assert "aa</w>" in vocab
+
