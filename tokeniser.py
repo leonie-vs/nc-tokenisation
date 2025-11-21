@@ -3,6 +3,9 @@ from collections import Counter
 
 class Tokeniser:
 
+    def __init__(self):
+        self.vocab = set()
+
     END_OF_WORD_SYMBOL = "</w>"
 
     def tokenise(self, text: str) -> list[str]:
@@ -31,6 +34,10 @@ class Tokeniser:
             split_word = [ch for ch in word]
             split_word.append(self.END_OF_WORD_SYMBOL)
             subword_tokens.append(split_word)
+        for word in tokens:
+            for ch in word:
+                self.vocab.add(ch)
+        self.vocab.add(self.END_OF_WORD_SYMBOL)
         return subword_tokens
     
     def count_symbol_pairs(self, subword_tokens: list[list[str]]) -> dict[tuple[str, str], int]:
@@ -45,6 +52,8 @@ class Tokeniser:
         if not pair_counts:
             return subword_tokens
         a, b = max(pair_counts, key=pair_counts.get)
+        new_symbol = a + b
+        self.vocab.add(new_symbol)
         merged_tokens = []
         for token in subword_tokens:
             new_token = []
@@ -67,5 +76,14 @@ class Tokeniser:
                 break
             subword_tokens = self.merge_most_frequent_pair(subword_tokens, pair_counts)
         return subword_tokens
+    
+    def get_vocab(self) -> set[str]:
+        return self.vocab
         
-        
+
+t = Tokeniser()
+t.build_bpe_vocab(["cat", "car", "cart"], num_merges=5)
+
+# After merging, this should include things like:
+# {'c', 'a', 't', 'r', '</w>', 'ca', 'ar', 'car'}
+print(t.get_vocab()) 
