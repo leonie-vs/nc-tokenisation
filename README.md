@@ -57,3 +57,21 @@
     - Merges that pair into a new subword
     - Returns the final subword representation after all merge operations.
 - Example: with tokens ["aa", "ab", "aa"] and 2 merges, the result becomes:<br>[["aa</w>"], ["a", "b", "</w>"], ["aa</w>"]]
+
+**get_vocab**
+- The tokeniser stores a set of all symbols it has learned.
+- The vocabulary begins with:
+    - every single character found in the input tokensthe end-of-word symbol "</'w>"
+- After each merge, the newly created subword symbol is also added to the vocabulary.
+
+- In this project’s version of BPE:
+- Merges are allowed to occur across the end-of-word symbol.
+- For example:
+    - ("aa", "</'w>") → "aa</'w>"
+    - Therefore, the final vocabulary can include items such as:
+    "a"
+    "aa"
+    "</'w>"
+    "aa</'w>" ← merged symbol signalising the end of a word
+- This differs from standard BPE implementations, but was intentionally included to track all newly formed symbols.
+- Access the full vocabulary with: **tokeniser.get_vocab()**
